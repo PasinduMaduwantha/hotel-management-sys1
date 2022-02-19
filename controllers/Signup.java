@@ -41,7 +41,7 @@ public class Signup  {
             Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Login.fxml"));
             loginStage.setScene(new Scene(root,1300,500));
             loginStage.setTitle("Login");
-            Stage stage = (Stage) txtName.getScene().getWindow();
+            Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
             loginStage.show();
 
@@ -74,6 +74,19 @@ public class Signup  {
     }
 
     public void frogotpwOnAction(ActionEvent actionEvent) {
+        try{
+            Stage loginStage = new Stage();
+            Parent root = FXMLLoader.load(this.getClass().getResource("/forms/ForgotPassword.fxml"));
+            loginStage.setScene(new Scene(root,1300,500));
+            loginStage.setTitle("Forgot Password");
+            Stage stage = (Stage) txtEmail.getScene().getWindow();
+            stage.close();
+            loginStage.show();
+
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
 }
