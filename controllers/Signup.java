@@ -1,5 +1,6 @@
 package controllers;
 
+
 import connections.InsertUpdateDelete;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +41,8 @@ public class Signup  {
             Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Login.fxml"));
             loginStage.setScene(new Scene(root,1300,500));
             loginStage.setTitle("Login");
+            Stage stage = (Stage) txtName.getScene().getWindow();
+            stage.close();
             loginStage.show();
 
         }
