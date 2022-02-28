@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminHomeController">
+
+    <content>
+        <AnchorPane>
+            <children>
+                <ImageView fitHeight="768.0" fitWidth="1366.0">
+                    <image>
+                        <Image url="@../images/image.jpg" />
+                    </image>
+                </ImageView>
+                <AnchorPane opacity="0.7" prefHeight="150.0" prefWidth="1366.0" style="-fx-background-color: #ffff;">
+                    <children>
+                        <Button fx:id="logoutBtn" blendMode="DIFFERENCE" defaultButton="true" layoutX="1205.0" layoutY="43.0" mnemonicParsing="false" onAction="#logoutOnAction" prefWidth="138.0" style="-fx-background-radius: 40; -fx-border-radius: 40; -fx-border-color: red; -fx-border-width: 2;" text="Logout" textFill="#961212">
+                            <font>
+                                <Font name="Comic Sans MS Bold" size="30.0" />
+                            </font>
+                        </Button>
+                        <Label layoutX="501.0" layoutY="43.0" text="Welcome Admin" textFill="#0b032e">
+                            <font>
+                                <Font name="Comic Sans MS Bold" size="48.0" />
+                            </font>
+                        </Label>
+                    </children></AnchorPane>
+                <AnchorPane layoutX="74.0" layoutY="200.0" opacity="0.7" prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: #ffff; -fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.leftAnchor="74.0" AnchorPane.topAnchor="200.0">
+                    <children>
+                        <TableView fx:id="tableVew" layoutX="11.0" layoutY="12.0" onMouseClicked="#viewOnAction" prefHeight="478.0" prefWidth="1173.0">
+                            <columns>
+                                <TableColumn fx:id="name" minWidth="250.0" prefWidth="75.0" text="Name" />
+                                <TableColumn fx:id="email" minWidth="250.0" prefWidth="75.0" text="Email" />
+                                <TableColumn fx:id="question" minWidth="250.0" prefWidth="75.0" text="Security Question" />
+                                <TableColumn fx:id="address" minWidth="250.0" prefWidth="75.0" text="Address" />
+                                <TableColumn fx:id="status" minWidth="150.0" prefWidth="75.0" text="Status" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+                <Label layoutX="74.0" layoutY="156.0" text="Search By Name Or Email">
+                    <font>
+                        <Font name="Comic Sans MS Bold" size="24.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="txtField" layoutX="433.0" layoutY="155.0" maxHeight="20.0" maxWidth="500.0" prefHeight="20.0" prefWidth="500.0">
+                    <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                    </font>
+                </TextField>
+                <Button defaultButton="true" layoutX="991.0" layoutY="153.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="41.0" prefWidth="116.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: red; -fx-border-width: 2;" text="Search" textFill="#961212">
+                    <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Button defaultButton="true" layoutX="1158.0" layoutY="153.0" mnemonicParsing="false" onAction="#clearOnAction" prefHeight="41.0" prefWidth="116.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: red; -fx-border-width: 2;" text="Clear" textFill="#961212">
+                    <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </content>
+</ScrollPane>

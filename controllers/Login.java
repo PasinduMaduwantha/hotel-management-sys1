@@ -42,10 +42,11 @@ public class Login {
             JOptionPane.showMessageDialog(null, "Please fill all the fields");
         }
         else if (email.equals("admin") && password.equals("1234")){
+//            if (true){
             check  = 1;
             try{
                 Stage loginStage = new Stage();
-                Parent root = FXMLLoader.load(this.getClass().getResource("/forms/AdminForm.fxml"));
+                Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Admin.fxml"));
                 loginStage.setScene(new Scene(root,1300,500));
                 loginStage.setTitle("Admin");
                 Stage stage = (Stage) txtEmail.getScene().getWindow();
