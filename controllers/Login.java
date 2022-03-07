@@ -82,6 +82,7 @@ public class Login {
                         JOptionPane.showMessageDialog(null, "Wait for admin approval");
                     }
                 }
+                resultSet.close();
             }
             catch (Exception e){
                 JOptionPane.showMessageDialog(null, e);

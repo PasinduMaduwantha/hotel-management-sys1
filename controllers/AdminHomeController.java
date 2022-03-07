@@ -1,5 +1,6 @@
 package controllers;
 
+import connections.InsertUpdateDelete;
 import connections.Select;
 import javafx.beans.binding.ObjectExpression;
 import javafx.collections.FXCollections;
@@ -9,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +18,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -53,7 +52,7 @@ public class AdminHomeController implements Initializable {
     }
 
     public void clearOnAction(ActionEvent event) {
-
+        tableVew.getItems().clear();
     }
 
     public void logoutOnAction(ActionEvent event) {
@@ -81,9 +80,43 @@ public class AdminHomeController implements Initializable {
             data.add(new TableData(rs.getString(1), rs.getString(2), rs.getString(4), rs.getString(6), rs.getString(7)));
         }
         tableVew.setItems(data);
+        rs.close();
     }
 
-    public void viewOnAction(MouseEvent mouseEvent) {
+    public void viewOnAction(MouseEvent mouseEvent) {;
+        int rowIndex = 0;
+        rowIndex = tableVew.getSelectionModel().getSelectedIndex();
+        String name="",email="",status = "false";
+        try{
+            //get the selected row and print that data
+            TableData selectedRow = (TableData) tableVew.getSelectionModel().getSelectedItem();
+            name = selectedRow.getName();
+            email = selectedRow.getEmail();
+            status = selectedRow.getStatus();
 
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        System.out.println(name);
+        System.out.println(email);
+
+        if (status.equals("true")){
+            status="false";
+        }
+        else{
+            status="true";
+        }
+
+        try{
+            int a = JOptionPane.showConfirmDialog(null, "Are you sure you want to change the status of "+name+" to "+status+"?", "Confirm", JOptionPane.YES_NO_OPTION);
+            if (a==0) {
+                String query = "UPDATE users SET status = '" + status + "' WHERE name = '" + name + "' and email = '" + email + "'";
+                InsertUpdateDelete.setData(query, "Status Updated");
+            }
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error in Status change");
+        }
     }
 }

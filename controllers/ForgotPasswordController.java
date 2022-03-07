@@ -20,7 +20,7 @@ import javax.swing.*;
 
 import static com.sun.glass.ui.Cursor.setVisible;
 
-public class ForgotPasswordController {
+public class ForgotPasswordController extends AdminHomeController {
     public TextField txtEmail;
     public TextField txtAns;
     public PasswordField password;
@@ -35,7 +35,6 @@ public class ForgotPasswordController {
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
             loginStage.show();
-
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
@@ -73,6 +72,7 @@ public class ForgotPasswordController {
                         JOptionPane.showMessageDialog(null, e);
                     }
                 }
+                rs.close();
             }
             catch (SQLException e){
                 JOptionPane.showMessageDialog(null, e);
@@ -119,5 +119,6 @@ public class ForgotPasswordController {
         if (check == 0){
             JOptionPane.showMessageDialog(null, "Incorrect email");
         }
+        rs.close();
     }
 }
