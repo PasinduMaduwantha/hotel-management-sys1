@@ -7,6 +7,8 @@ public class TableData {
     private String address;
     private String status;
 
+
+
     public TableData(String name, String email, String question, String address, String status) {
         this.name = name;
         this.email = email;
@@ -14,7 +16,6 @@ public class TableData {
         this.address = address;
         this.status = status;
     }
-
 
     public String getName() {
         return name;

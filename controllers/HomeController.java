@@ -37,6 +37,7 @@ public class HomeController implements Initializable {
     public ComboBox checkInRoomNoCombo;
     public ComboBox checkInRoomTypeCombo;
     public TextField checkiInPrice;
+
     @FXML
     private TableView roomData;
     @FXML
@@ -49,6 +50,38 @@ public class HomeController implements Initializable {
     private TableColumn<TableData,String> priceCol;
     @FXML
     private TableColumn<TableData,String> statCol;
+
+
+    /******************************************************************
+     *                          check out variables
+     *******************************************************************/
+    public TextField customerNameCO;
+    public TextField checkInDateCO;
+    public TextField checkOutDateCO;
+    public TextField customerMobileNumCO;
+    public TextField pricePerDayCO;
+    public TextField numOfDaysStayCO;
+    public TextField totalAmountCO;
+    public TextField emailCO;
+    public TextField roomNumTxt;
+    public TableView checkOutTable;
+
+    public TableColumn<CheckOutTableData,String> checkOUtIdCOl;
+    public TableColumn<CheckOutTableData,String> checkOutNameCOl;
+    public TableColumn<CheckOutTableData,String> checkOutMobileCol;
+    public TableColumn<CheckOutTableData,String> checkOutNationalityCol;
+    public TableColumn<CheckOutTableData,String> checkOutGenderCol;
+    public TableColumn<CheckOutTableData,String> checkOutEmailCol;
+    public TableColumn<CheckOutTableData,String> checkOutIdProofCol;
+    public TableColumn<CheckOutTableData,String> checkOutAddressCol;
+    public TableColumn<CheckOutTableData,String> checkOutCheckInCol;
+    public TableColumn<CheckOutTableData,String> checkOutroNumberCol;
+    public TableColumn<CheckOutTableData,String> checkOutBedCol;
+    public TableColumn<CheckOutTableData,String> checkOutRoomTypeCol;
+    public TableColumn<CheckOutTableData,String> checkOutPricePerDayCol;
+
+    /******************************************************************
+     *******************************************************************/
     @FXML
     private TextField roomNumm;
     @FXML
@@ -83,22 +116,23 @@ public class HomeController implements Initializable {
     ObservableList data = FXCollections.observableArrayList(
 //            new TableData("0", "AC", "Single", "500", "Available")
     );
+    ObservableList checkOutList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        /*******************************************************
+         room check in
+         ********************************************************/
         rnCol.setCellValueFactory(new PropertyValueFactory<TableData, String>("name"));
         rtCol.setCellValueFactory(new PropertyValueFactory<TableData, String>("email"));
         bedCol.setCellValueFactory(new PropertyValueFactory<TableData, String>("question"));
         priceCol.setCellValueFactory(new PropertyValueFactory<TableData, String>("address"));
         statCol.setCellValueFactory(new PropertyValueFactory<TableData, String>("status"));
-//        roomData.setItems(data);
+        roomData.setItems(data);
 
         roomType.setItems(roomTypeList);
         bedNo.setItems(bedNoList);
 
-        /*******************************************************
-        room check in
-         ********************************************************/
         checkInBedCombo.setItems(bedNoList);
         checkInRoomTypeCombo.setItems(roomTypeList);
         chackIngenderCombo.setItems(genderList);
@@ -106,6 +140,24 @@ public class HomeController implements Initializable {
         CheckInDate.setEditable(false);
         checkiInPrice.setEditable(false);
         CheckInDate.setText(java.time.LocalDate.now().toString());
+
+        /*******************************************************
+         room check Out
+         ********************************************************/
+        checkOUtIdCOl.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOUtIdCOl"));
+        checkOutNameCOl.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutNameCOl"));
+        checkOutMobileCol.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutMobileCol"));
+        checkOutNationalityCol.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutNationalityCol"));
+        checkOutGenderCol.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutGenderCol"));
+        checkOutEmailCol.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutEmailCol"));
+        checkOutIdProofCol.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutIdProofCol"));
+        checkOutAddressCol.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutAddressCol"));
+        checkOutCheckInCol.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutCheckInCol"));
+        checkOutroNumberCol.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutroNumberCol"));
+        checkOutBedCol.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutBedCol"));
+        checkOutRoomTypeCol.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutRoomTypeCol"));
+        checkOutPricePerDayCol.setCellValueFactory(new PropertyValueFactory<CheckOutTableData, String>("checkOutPricePerDayCol"));
+        checkOutTable.setItems(checkOutList);
     }
 
     public void logOutOnAction(javafx.event.ActionEvent actionEvent) {
@@ -240,6 +292,38 @@ public class HomeController implements Initializable {
         catch (Exception e){
             JOptionPane.showMessageDialog(null, "Error in room details");
         }
+    }
+
+    /***********************************************************************************
+     * Room Check-In
+     ************************************************************************************/
+
+    int checkOutId = 0;
+    String checkOutQuery = "";
+    String checkOutRoomNo = "";
+    String checkOutBed = "";
+    String checkOutRoomType = "";
+
+    public void checkOutOnAction(ActionEvent actionEvent) {
+    }
+
+    public void clearOnAction(ActionEvent actionEvent) {
+    }
+
+    public void searchOnAction(ActionEvent actionEvent) {
+    }
+
+    public void ckeckOutTableOnAction(MouseEvent mouseEvent) throws SQLException {
+        String query = "SELECT * FROM customers WHERE chekOut is null";
+        ResultSet checkOutRs = Select.resultSet(query);
+        checkOutList.clear();
+        while(checkOutRs.next()){
+            checkOutList.add(new CheckOutTableData(checkOutRs.getString(1), checkOutRs.getString(2), checkOutRs.getString(3), checkOutRs.getString(4), checkOutRs.getString(5), checkOutRs.getString(6), checkOutRs.getString(7), checkOutRs.getString(8), checkOutRs.getString(9), checkOutRs.getString(10), checkOutRs.getString(11), checkOutRs.getString(12), checkOutRs.getString(13)));
+        }
+
+        roomData.setItems(checkOutList);
+        checkOutRs.close();
+
     }
 }
 
