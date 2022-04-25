@@ -20,6 +20,10 @@ import javax.swing.*;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
@@ -305,12 +309,76 @@ public class HomeController implements Initializable {
     String checkOutRoomType = "";
 
     public void checkOutOnAction(ActionEvent actionEvent) {
+        String name = customerNameCO.getText();
+        String mobile = customerMobileNumCO.getText();
+        String email = emailCO.getText();
+
+        String checkOut = checkOutDateCO.getText();
+        String noOfDays = numOfDaysStayCO.getText();
+        String totalPrice = totalAmountCO.getText();
+        checkOutRoomNo = roomNumTxt.getText();
+        checkOutQuery = "UPDATE customers SET numberOdDayStay='"+noOfDays+"', totalAmount= '"+totalPrice+"',chekOut='"+checkOut+"' WHERE bookingId='"+checkOutId+"'";
+        InsertUpdateDelete.setData(checkOutQuery, "");
+        checkOutQuery = "UPDATE rooms SET status='Available' WHERE roomNo='"+checkOutRoomNo+"'";
+        InsertUpdateDelete.setData(checkOutQuery, "");
+
+//        String path=""
     }
 
     public void clearOnAction(ActionEvent actionEvent) {
+        try{
+            Stage loginStage = new Stage();
+            Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Home.fxml"));
+            loginStage.setScene(new Scene(root,1300,500));
+            loginStage.setTitle("Home");
+            Stage stage = (Stage) roomNumTxt.getScene().getWindow();
+            stage.close();
+            loginStage.show();
+
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     public void searchOnAction(ActionEvent actionEvent) {
+        String roomNo=roomNumTxt.getText();
+        try{
+            String sql = "SELECT * FROM customers WHERE roomNo = '"+roomNo+"' AND chekOut IS NULL";
+            ResultSet rs = Select.resultSet(sql);
+            if (rs.next()){
+                roomNumTxt.setEditable(false);
+                checkOutId = rs.getInt(1);
+                customerNameCO.setText(rs.getString(2));
+                customerMobileNumCO.setText(rs.getString(3));
+                checkInDateCO.setText(rs.getString(9));
+                pricePerDayCO.setText(rs.getString(13));
+                emailCO.setText(rs.getString(6));
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Calendar c = Calendar.getInstance();
+                checkOutDateCO.setText(sdf.format(c.getTime()));
+                String dateBefore = rs.getString(9);
+                Date date1 = sdf.parse(dateBefore);
+                String dateAfter = sdf.format(c.getTime());
+                Date date2 = sdf.parse(dateAfter);
+                long diff = date2.getTime() - date1.getTime();
+                int days = (int) (diff / (1000*60*60*24));
+                if (days == 0)
+                    days = 1;
+
+                numOfDaysStayCO.setText(String.valueOf(days));
+                float totalPrice = Float.parseFloat(pricePerDayCO.getText()) * days;
+                totalAmountCO.setText(String.valueOf(totalPrice));
+                checkOutRoomType = rs.getString(12);
+                checkOutBed = rs.getString(11);
+            }
+            else {
+                JOptionPane.showMessageDialog(null,"Customer is already checked out");
+            }
+        } catch (SQLException | ParseException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void ckeckOutTableOnAction(MouseEvent mouseEvent) throws SQLException {
