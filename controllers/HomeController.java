@@ -1,5 +1,8 @@
 package controllers;
 
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import connections.InsertUpdateDelete;
 import connections.Select;
 import javafx.collections.FXCollections;
@@ -17,6 +20,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -322,7 +327,49 @@ public class HomeController implements Initializable {
         checkOutQuery = "UPDATE rooms SET status='Available' WHERE roomNo='"+checkOutRoomNo+"'";
         InsertUpdateDelete.setData(checkOutQuery, "");
 
-//        String path=""
+        String path="H:\\hotel-management-sys1\\";
+        com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(path+""+checkOutId+".pdf"));
+            document.open();
+            Paragraph paragraph1 = new Paragraph("\tHotel Management System-Customer Check Out Details");
+            document.add(paragraph1);
+            Paragraph paragraph2 = new Paragraph("****************************************************************************************************************");
+            document.add(paragraph2);
+            Paragraph paragraph3 = new Paragraph("\tBill No: "+checkOutId+"\nCustomer Details: \nName: "+name+"\nMobile No: "+mobile+"\nEmail: "+email+"\n");
+            document.add(paragraph3);
+            document.add(paragraph2);
+            Paragraph paragraph4 = new Paragraph("\tRoom Details:\nRoom Number "+roomNumTxt.getText()+"\nRoom Type: "+checkOutRoomType+"\nBed: "+checkOutBed+"\nPrice per day: "+pricePerDayCO.getText()+"");
+            document.add(paragraph4);
+            document.add(paragraph2);
+            PdfPTable table1 = new PdfPTable(4);
+            table1.addCell("Check In Date"+checkInDateCO.getText());
+            table1.addCell("Check Out Date"+checkOut);
+            table1.addCell("No Of Days Stay"+noOfDays);
+            table1.addCell("Total Amount To Paid"+totalPrice);
+            document.add(table1);
+            document.add(paragraph2);
+            Paragraph paragraph5=new Paragraph("Thank You for staying with us. See you again");
+            document.add(paragraph5);
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        document.close();
+        int option=JOptionPane.showConfirmDialog(null,"Do you want to print the bill?","Confirm",JOptionPane.YES_NO_OPTION);
+        if(option==0){
+            try {
+                if((new File("H:\\hotel-management-sys1\\"+checkOutId+".pdf")).exists()){
+                    Process process = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler H:\\hotel-management-sys1\\"+checkOutId+".pdf");
+                }
+                else
+                    JOptionPane.showMessageDialog(null,"File is not exist");
+            }
+            catch (Exception e){
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+
     }
 
     public void clearOnAction(ActionEvent actionEvent) {

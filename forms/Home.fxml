@@ -307,7 +307,7 @@
                                     <Font name="Comic Sans MS Bold" size="18.0" />
                                  </font>
                               </Button>
-                              <Label layoutX="360.0" layoutY="158.0" prefHeight="35.0" prefWidth="171.0" text="Room Number">
+                              <Label layoutX="352.0" layoutY="158.0" prefHeight="35.0" prefWidth="171.0" text="Room Number">
                                  <font>
                                     <Font name="Comic Sans MS Bold Italic" size="24.0" />
                                  </font>
