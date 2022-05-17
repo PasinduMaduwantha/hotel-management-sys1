@@ -173,7 +173,7 @@ public class HomeController implements Initializable {
         try{
             Stage loginStage = new Stage();
             Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Login.fxml"));
-            loginStage.setScene(new Scene(root,1300,500));
+            loginStage.setScene(new Scene(root));
             loginStage.setTitle("Login");
             Stage stage = (Stage) logoutBtn.getScene().getWindow();
             stage.close();
@@ -193,7 +193,7 @@ public class HomeController implements Initializable {
             bed = bedNo.getValue().toString();
         }
         String price1 = price.getText();
-        String status = "Not-Available";
+        String status = "Available";
 
         if(roomNo.equals("") || type.equals("") || bed.equals("") || price1.equals("")){
             JOptionPane.showMessageDialog(null, "Please fill all the fields");
@@ -376,7 +376,7 @@ public class HomeController implements Initializable {
         try{
             Stage loginStage = new Stage();
             Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Home.fxml"));
-            loginStage.setScene(new Scene(root,1300,500));
+            loginStage.setScene(new Scene(root));
             loginStage.setTitle("Home");
             Stage stage = (Stage) roomNumTxt.getScene().getWindow();
             stage.close();

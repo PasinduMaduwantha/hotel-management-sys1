@@ -20,7 +20,7 @@ public class Login {
         try{
             Stage loginStage = new Stage();
             Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Signup.fxml"));
-            loginStage.setScene(new Scene(root,1300,500));
+            loginStage.setScene(new Scene(root));
             loginStage.setTitle("Login");
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
@@ -47,7 +47,7 @@ public class Login {
             try{
                 Stage loginStage = new Stage();
                 Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Admin.fxml"));
-                loginStage.setScene(new Scene(root,1300,500));
+                loginStage.setScene(new Scene(root));
                 loginStage.setTitle("Admin");
                 Stage stage = (Stage) txtEmail.getScene().getWindow();
                 stage.close();
@@ -67,7 +67,7 @@ public class Login {
                         try{
                             Stage loginStage = new Stage();
                             Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Home.fxml"));
-                            loginStage.setScene(new Scene(root,1300,500));
+                            loginStage.setScene(new Scene(root));
                             loginStage.setTitle("Home");
                             Stage stage = (Stage) txtEmail.getScene().getWindow();
                             stage.close();
@@ -95,13 +95,13 @@ public class Login {
 
     public void frogotpwOnAction(ActionEvent actionEvent) {
         try{
-            Stage loginStage = new Stage();
-            Parent root = FXMLLoader.load(this.getClass().getResource("/forms/ForgotPassword.fxml"));
-            loginStage.setScene(new Scene(root,1300,500));
-            loginStage.setTitle("Forgot Password");
+            Stage forgotStage = new Stage();
+            Parent root = FXMLLoader.load(this.getClass().getResource("/forms/ForgotPW.fxml"));
+            forgotStage.setScene(new Scene(root));
+            forgotStage.setTitle("Forgot Password");
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
-            loginStage.show();
+            forgotStage.show();
 
         }
         catch (Exception e){
