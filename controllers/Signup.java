@@ -39,7 +39,7 @@ public class Signup  {
         try{
             Stage loginStage = new Stage();
             Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Login.fxml"));
-            loginStage.setScene(new Scene(root,1300,500));
+            loginStage.setScene(new Scene(root));
             loginStage.setTitle("Login");
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
@@ -77,7 +77,7 @@ public class Signup  {
         try{
             Stage loginStage = new Stage();
             Parent root = FXMLLoader.load(this.getClass().getResource("/forms/ForgotPassword.fxml"));
-            loginStage.setScene(new Scene(root,1300,500));
+            loginStage.setScene(new Scene(root));
             loginStage.setTitle("Forgot Password");
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();

@@ -30,7 +30,7 @@ public class ForgotPasswordController extends AdminHomeController {
         try{
             Stage loginStage = new Stage();
             Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Login.fxml"));
-            loginStage.setScene(new Scene(root,1300,500));
+            loginStage.setScene(new Scene(root));
             loginStage.setTitle("Login");
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
@@ -84,7 +84,7 @@ public class ForgotPasswordController extends AdminHomeController {
         try{
             Stage loginStage = new Stage();
             Parent root = FXMLLoader.load(this.getClass().getResource("/forms/Signup.fxml"));
-            loginStage.setScene(new Scene(root,1300,500));
+            loginStage.setScene(new Scene(root));
             loginStage.setTitle("signup");
             Stage stage = (Stage) txtEmail.getScene().getWindow();
             stage.close();
