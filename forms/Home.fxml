@@ -317,7 +317,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="Customer Details Bill">
+                  <Tab text="Customer Details &amp; Bills">
                      <content>
                         <AnchorPane>
                            <children>
@@ -328,22 +328,53 @@
                               </ImageView>
                               <AnchorPane opacity="0.7" prefHeight="150.0" prefWidth="1366.0" style="-fx-background-color: #ffff;">
                                  <children>
-                                    <Label layoutX="440.0" layoutY="42.0" text="Customer Details Bill" textFill="#0b032e">
+                                    <Label layoutX="402.0" layoutY="42.0" text="Customer Details &amp; Bills" textFill="#0b032e">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="48.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="74.0" layoutY="200.0" opacity="0.7" prefHeight="500.0" prefWidth="1200.0" style="-fx-background-color: #ffff; -fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.leftAnchor="74.0" AnchorPane.topAnchor="200.0">
+                              <AnchorPane layoutX="13.0" layoutY="200.0" opacity="0.7" prefHeight="504.0" prefWidth="1322.0" style="-fx-background-color: #ffff; -fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="200.0">
                                  <children>
-                                    <Button defaultButton="true" layoutX="991.0" layoutY="391.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="116.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: red; -fx-border-width: 2;" text="Clear" textFill="#961212">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold" size="18.0" />
-                                       </font>
-                                    </Button>
+                                    <TableView fx:id="detailsBillsTable" layoutX="-1.0" layoutY="1.0" onMouseClicked="#detailsBillsTableOnAction" onSort="#billOnSort" prefHeight="485.0" prefWidth="1346.0">
+                                       <columns>
+                                          <TableColumn fx:id="biiID" minWidth="15.0" prefWidth="52.000003814697266" text="ID" />
+                                          <TableColumn fx:id="billName" minWidth="15.0" prefWidth="54.99999237060547" text="Name" />
+                                          <TableColumn fx:id="billMobileNo" minWidth="15.0" prefWidth="97.0" text="Mobile Number" />
+                                          <TableColumn fx:id="billNationality" minWidth="15.0" prefWidth="83.00001525878906" text="Nationality" />
+                                          <TableColumn fx:id="billGender" minWidth="15.0" prefWidth="72.0" text="Gender" />
+                                          <TableColumn fx:id="billEmail" minWidth="15.0" prefWidth="75.0" text="Email" />
+                                          <TableColumn fx:id="billIDProof" minWidth="15.0" prefWidth="81.0" text="Id Proof" />
+                                          <TableColumn fx:id="billAddress" minWidth="15.0" prefWidth="81.0" text="Address" />
+                                          <TableColumn fx:id="billCheckInDate" minWidth="15.0" prefWidth="95.0" text="ChackIn Date" />
+                                          <TableColumn fx:id="billRoomNumber" minWidth="15.0" prefWidth="88.0" text="Room Number" />
+                                          <TableColumn fx:id="billBed" minWidth="15.0" prefWidth="68.0" text="Bed" />
+                                          <TableColumn fx:id="billRoomType" minWidth="15.0" prefWidth="89.0" text="Room Type" />
+                                          <TableColumn fx:id="billPricePerDay" minWidth="15.0" prefWidth="95.0" text="Price per day" />
+                                          <TableColumn fx:id="billNumOFDays" minWidth="15.0" prefWidth="101.0" text="Number Of Days" />
+                                          <TableColumn fx:id="billTotalAmount" minWidth="15.0" prefWidth="87.0" text="Total Amount" />
+                                          <TableColumn fx:id="billCheckOutDate" minWidth="15.0" prefWidth="111.0" text="Check Out Date" />
+                                       </columns>
+                                    </TableView>
                                  </children>
                               </AnchorPane>
+                              <Button defaultButton="true" layoutX="850.0" layoutY="155.0" mnemonicParsing="false" onAction="#billsSearchOnAction" prefHeight="41.0" prefWidth="116.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: red; -fx-border-width: 2;" text="Search" textFill="#961212">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="189.0" layoutY="158.0" prefHeight="35.0" prefWidth="334.0" text="Search By Check Out Date">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold Italic" size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="billsTxt" layoutX="556.0" layoutY="163.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #9de0e0;" />
+                              <Label blendMode="DARKEN" layoutX="357.0" layoutY="719.0" text="Click on table row to open the bill" textFill="RED">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold Italic" size="24.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                      </content>
