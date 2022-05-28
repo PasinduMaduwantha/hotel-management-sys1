@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
    <content>
       <AnchorPane>
          <children>
@@ -359,18 +359,29 @@
                                     </TableView>
                                  </children>
                               </AnchorPane>
-                              <Button defaultButton="true" layoutX="850.0" layoutY="155.0" mnemonicParsing="false" onAction="#billsSearchOnAction" prefHeight="41.0" prefWidth="116.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: red; -fx-border-width: 2;" text="Search" textFill="#961212">
+                              <Button defaultButton="true" layoutX="628.0" layoutY="155.0" mnemonicParsing="false" onAction="#billsSearchOnAction" prefHeight="41.0" prefWidth="116.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: red; -fx-border-width: 2;" text="Search" textFill="#961212">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="18.0" />
                                  </font>
                               </Button>
-                              <Label layoutX="189.0" layoutY="158.0" prefHeight="35.0" prefWidth="334.0" text="Search By Check Out Date">
+                              <Label layoutX="14.0" layoutY="158.0" prefHeight="35.0" prefWidth="334.0" text="Search By Check Out Date">
                                  <font>
                                     <Font name="Comic Sans MS Bold Italic" size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="billsTxt" layoutX="556.0" layoutY="163.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #9de0e0;" />
+                              <TextField fx:id="billsTxt" layoutX="357.0" layoutY="163.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #9de0e0;" />
                               <Label blendMode="DARKEN" layoutX="357.0" layoutY="719.0" text="Click on table row to open the bill" textFill="RED">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold Italic" size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="opnPDF" layoutX="1064.0" layoutY="163.0" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: #9de0e0;" />
+                              <Button defaultButton="true" layoutX="1224.0" layoutY="155.0" mnemonicParsing="false" onAction="#openPDFONAction" prefHeight="41.0" prefWidth="116.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: red; -fx-border-width: 2;" text="Open" textFill="#961212">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="744.0" layoutY="158.0" prefHeight="35.0" prefWidth="334.0" text="Enter ID to Open the Bill">
                                  <font>
                                     <Font name="Comic Sans MS Bold Italic" size="24.0" />
                                  </font>
