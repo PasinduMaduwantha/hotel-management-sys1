@@ -47,6 +47,7 @@ public class HomeController implements Initializable {
     public ComboBox checkInRoomTypeCombo;
     public TextField checkiInPrice;
     public TextField billsTxt;
+    public TextField opnPDF;
 
     @FXML
     private TableView roomData;
@@ -520,6 +521,22 @@ public class HomeController implements Initializable {
         }
         detailsBillsTable.setItems(billDetailsList);
         printBillRs.close();
+    }
+
+    public void openPDFONAction(ActionEvent actionEvent) {
+        String id=opnPDF.getText();
+        System.out.println(id);
+        try{
+            if ((new File("H:\\hotel-management-sys1\\"+id+".pdf")).exists()){
+                Process process=Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler H:\\hotel-management-sys1\\"+id+".pdf");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"File is not exists");
+            }
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
     }
 }
 
