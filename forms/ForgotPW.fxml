@@ -33,7 +33,7 @@
                                 <Font name="Comic Sans MS Bold" size="24.0" />
                             </font>
                         </Label>
-                        <Label layoutX="20.0" layoutY="149.0" text="Sequrity Question">
+                        <Label layoutX="20.0" layoutY="149.0" text="Security Question">
                             <font>
                                 <Font name="Comic Sans MS Bold" size="24.0" />
                             </font>
@@ -71,7 +71,7 @@
                         <Font name="Comic Sans MS Bold" size="30.0" />
                     </font>
                 </Button>
-                <Button fx:id="saveBtn" blendMode="HARD_LIGHT" defaultButton="true" layoutX="400.0" layoutY="639.0" mnemonicParsing="false" onAction="#svaeOnAvtion" style="-fx-background-radius: 20; -fx-border-radius: 20;" text="Save" textFill="#4636a1">
+                <Button fx:id="saveBtn" blendMode="HARD_LIGHT" defaultButton="true" layoutX="400.0" layoutY="639.0" mnemonicParsing="false" onAction="#saveOnAction" style="-fx-background-radius: 20; -fx-border-radius: 20;" text="Save" textFill="#4636a1">
                     <font>
                         <Font name="Comic Sans MS Bold" size="30.0" />
                     </font>
